@@ -32,7 +32,7 @@ namespace Movimiento.Application.Movimientos.Commands
          var validator = new CreateMovementValidator(request);
          var validationResult = await validator.ValidateAsync(movement, cancellationToken);
 
-         if (validationResult.IsValid == false) throw new NotFoundException(validationResult);
+         if (validationResult.IsValid == false) throw new ValidationException(validationResult);
 
          double currentAmount = request.AccountAmount + movement.MovementAmount;
          movement.MovementBalance = currentAmount;

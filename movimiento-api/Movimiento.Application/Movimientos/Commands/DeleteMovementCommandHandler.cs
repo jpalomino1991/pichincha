@@ -42,8 +42,6 @@ namespace Movimiento.Application.Movimientos.Commands
 
          await _accountService.UpdateAccount(movement.AccountId, updateAccount);
 
-         await _movementRepository.AddAsync(movement);
-
          movement.MovementState = false;
 
          await _movementRepository.UpdateAsync(movement);

@@ -28,7 +28,7 @@ namespace Cuenta.Application.Cuentas.Commands
          var validator = new CreateAccountValidator(_accountRepository);
          var validationResult = await validator.ValidateAsync(account, cancellationToken);
 
-         if (validationResult.IsValid == false) throw new NotFoundException(validationResult);
+         if (validationResult.IsValid == false) throw new ValidationException(validationResult);
 
          ClientResponseModel client = await _clientService.GetClientByName(request.ClientName);
 

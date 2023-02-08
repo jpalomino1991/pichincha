@@ -28,11 +28,11 @@ namespace Cuenta.Application.Cuentas.Queries
          var validator = new UpdateAccountValidator<AccountEntity>(account);
          var validationResult = await validator.ValidateAsync(request.AccountId, cancellationToken);
 
+         if (validationResult.IsValid == false) throw new NotFoundException(validationResult);
+
          ClientResponseModel client = await _clientService.GetClientById(account.ClientId);
 
          account.ClientName = client.Person.PersonName;
-
-         if (validationResult.IsValid == false) throw new NotFoundException(validationResult);
 
          return _mapper.Map<GetAccountResponseModel>(account);
       }

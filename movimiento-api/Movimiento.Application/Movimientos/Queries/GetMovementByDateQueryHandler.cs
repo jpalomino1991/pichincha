@@ -11,13 +11,11 @@ namespace Movimiento.Application.Movimientos.Queries
    {
       private readonly IMapper _mapper;
       private readonly IMovementRepository _movementRepository;
-      private readonly IAccountService _accountService;
       private readonly IClientService _clientService;
-      public GetMovementByDateQueryHandler(IMapper mapper, IMovementRepository movementRepository, IAccountService accountService, IClientService clientService)
+      public GetMovementByDateQueryHandler(IMapper mapper, IMovementRepository movementRepository, IClientService clientService)
       {
          _mapper = mapper;
          _movementRepository = movementRepository;
-         _accountService = accountService;
          _clientService = clientService;
       }
 
