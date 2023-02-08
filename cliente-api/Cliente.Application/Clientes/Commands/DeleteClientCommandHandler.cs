@@ -1,16 +1,9 @@
 ﻿using AutoMapper;
 using Cliente.Application.Common.Exceptions;
 using Cliente.Application.Common.Validators.Custom;
-using Cliente.Application.Cuentas.Commands;
-using Cliente.Application.Response;
 using Cliente.Domain.Entities;
 using Cliente.Domain.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cliente.Application.Clientes.Commands
 {
