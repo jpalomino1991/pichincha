@@ -18,10 +18,7 @@ FROM build AS publish
 RUN dotnet publish "Movimiento.WEBAPI.csproj" -c Release -o /app/publish
 
 FROM base AS final
-RUN addgroup --group tpapgrp --gid 2000 && adduser --uid 1000 --gid 2000 tpapusr --disabled-password
-RUN chown -R tpapusr:tpapgrp /app
-USER tpapusr:tpapgrp
 WORKDIR /app
-COPY --chown=tpapusr:tpapgrp --from=publish /app/publish .
+COPY --from=publish /app/publish .
 ENV ASPNETCORE_URLS="http://*:8086"
 ENTRYPOINT ["dotnet", "Movimiento.WEBAPI.dll"]
